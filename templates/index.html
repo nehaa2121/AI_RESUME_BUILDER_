@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Builder</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:'Segoe UI';
+            background:linear-gradient(to right,#667eea,#764ba2);
+            color:white;
+        }
+
+        /* HEADER */
+        header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,0.1);
+            backdrop-filter:blur(10px);
+            position:fixed;
+            width:100%;
+            box-sizing:border-box;
+            top:0;
+        }
+
+        .logo{
+            font-size:24px;
+            font-weight:bold;
+        }
+
+        .nav-buttons{
+            display:flex;
+            gap:10px;
+        }
+
+        .nav-buttons button{
+            padding:10px 20px;
+            border:none;
+            border-radius:25px;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .login-btn{
+            background:transparent;
+            border:2px solid white;
+            color:white;
+        }
+
+        .signup-btn{
+            background:white;
+            color:#764ba2;
+        }
+
+        /* HERO */
+        .hero{
+            text-align:center;
+            padding:180px 20px 100px;
+        }
+
+        .hero h1{
+            font-size:50px;
+        }
+
+        .hero p{
+            font-size:20px;
+            margin-bottom:30px;
+        }
+
+        .hero button{
+            padding:15px 30px;
+            border:none;
+            border-radius:30px;
+            background:white;
+            color:#764ba2;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        /* FEATURES */
+        .features{
+            background:white;
+            color:#333;
+            padding:60px 20px;
+            text-align:center;
+        }
+
+        .feature-box{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .card{
+            background:#f4f4f4;
+            width:250px;
+            padding:20px;
+            border-radius:15px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* HOW IT WORKS */
+        .steps{
+            padding:60px 20px;
+            text-align:center;
+        }
+
+        .steps-box{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .step{
+            background:rgba(255,255,255,0.15);
+            padding:20px;
+            width:250px;
+            border-radius:15px;
+        }
+
+        /* TEMPLATE PREVIEW */
+        .templates{
+            background:white;
+            color:#333;
+            text-align:center;
+            padding:60px 20px;
+        }
+
+        .template-row{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .template-row img{
+            width:250px;
+            border-radius:10px;
+        }
+
+        /* FOOTER */
+        footer{
+            text-align:center;
+            padding:20px;
+            background:rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">AI Resume Builder</div>
+
+    <div class="nav-buttons">
+        <a href="/login"><button class="login-btn">Login</button></a>
+        <a href="/signup"><button class="signup-btn">Sign Up</button></a>
+    </div>
+</header>
+
+
+<section class="hero">
+    <h1>Create Professional Resumes with AI</h1>
+    <p>Build stunning resumes instantly and get smart job suggestions.</p>
+
+    <a href="/signup">
+        <button>Get Started</button>
+    </a>
+</section>
+
+
+<section class="features">
+    <h2>What We Provide</h2>
+
+    <div class="feature-box">
+
+        <div class="card">
+            <h3>🤖 AI Resume Builder</h3>
+            <p>Create resumes automatically using AI assistance.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎨 Resume Templates</h3>
+            <p>Select from multiple modern templates.</p>
+        </div>
+
+        <div class="card">
+            <h3>💼 Job Suggestions</h3>
+            <p>Receive jobs based on your profile.</p>
+        </div>
+
+        <div class="card">
+            <h3>📥 PDF Download</h3>
+            <p>Download your resume instantly.</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 AI Resume Builder & Job Suggestions</p>
+</footer>
+
+</body>
+</html>

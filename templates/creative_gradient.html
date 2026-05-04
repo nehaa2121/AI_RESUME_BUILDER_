@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creative Gradient Resume</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* FULL PAGE BACKGROUND */
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            background: #3b82f6;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            color: #1e3a8a;
+            font-size:30px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 5px;
+            color: #2563eb;
+            font-size:25px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 5px 0;
+        }
+
+        .header {
+            margin-bottom: 15px;
+        }
+
+        /* PDF FIX */
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <h1>{{ name }}</h1>
+            <p>{{ email }} | {{ phone }}</p>
+            <p>{{ address }}</p>
+        </div>
+
+        <!-- CAREER OBJECTIVE -->
+        <h2>Career Objective</h2>
+        <p>{{ ai_summary }}</p>
+
+        <!-- EDUCATION -->
+        <h2>Education</h2>
+        <p><b>{{ degree }}</b></p>
+        <p>{{ college }} - {{ year }}</p>
+
+        <!-- SKILLS -->
+        <h2>Skills</h2>
+        <p>{{ skills }}</p>
+
+        <!-- PROJECTS -->
+        <h2>Projects</h2>
+        <p>{{ projects }}</p>
+
+        <!-- EXPERIENCE -->
+        <h2>Experience</h2>
+        <p>{{ experience }}</p>
+
+    </div>
+</div>
+
+</body>
+</html>

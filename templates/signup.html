@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Signup</title>
+<style>
+    body{
+        margin:0;
+        font-family: 'Segoe UI';
+        background: linear-gradient(to right, #667eea, #764ba2);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+    .box{
+        background: white;
+        padding:30px;
+        border-radius:10px;
+        width:300px;
+        text-align:center;
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    }
+    h2{
+        margin-bottom:20px;
+    }
+    input{
+        width:100%;
+        padding:10px
+        margin:10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing:border-box;
+    }
+    button {
+        width:100%;
+        padding:10px;
+        background:#667eea;
+        color: white;
+        border:none;
+        border-radius: 5px;
+        cursor:pointer;
+    }
+    button:hover{
+        background:#5a67d8;
+    }
+    a{
+        text-decoration:none;
+        color: #667eea;
+    }
+    .box {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        width: 300px;
+        text-align: center;
+        /* Fixed space in rgba */
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.2); 
+    }
+
+    input {
+        width: 100%;
+        padding: 10px; /* Added semicolon */
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; /* Ensures padding doesn't break width */
+    }
+    label {
+        display: block;
+        text-align: left;
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #444;
+    }
+
+
+</style>
+</head>
+
+<body>
+    <div class="box">
+    <h2>Create Account</h2>
+
+    <form action="/signup" method="post">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+        
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="email@example.com" required>
+        
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Create a password" required>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
+</div>
+</body>
+</html>       

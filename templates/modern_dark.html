@@ -1,0 +1,83 @@
+
+        <title>Modern_dark</title>
+        <style>
+            .modern_dark{
+                font-family:Arial;
+                background:white;
+                color:#111827;
+                padding:20px;
+            }
+            .modern_dark .header {
+            text-align: center;
+            border-bottom: 2px solid #374151;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .modern_dark h1 {
+            color: #60a5fa;
+            margin-bottom: 5px;
+            font-size:30px;
+        }
+
+        .modern_dark .section {
+            margin-bottom: 20px;
+        }
+
+        .modern_dark h2 {
+            border-bottom: 1px solid #374151;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size:25px;
+        }
+
+        /* -------- PDF MODE FIX -------- */
+        {% if pdf_mode %}
+        body {
+            background: white !important;
+            color: black !important;
+        }
+
+        .modern_dark {
+            background: white !important;
+            color: black !important;
+        }
+
+        .modern_dark h1 {
+            color: black !important;
+        }
+        {% endif %}
+        </style>
+    </head>
+    <body>
+        <div class="modern_dark">
+            
+        <div class="header">
+        <h1 style="color: {{ theme_color }};">{{ name }}</h1>
+        <p>{{ email }} | {{ phone }}</p>
+        </div> 
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Summary</h2>
+            <p>{{ ai_summary }}</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Skills</h2>
+            <p>{{ skills }}</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Education</h2>
+            <p>{{ degree }}-{{college}} ({{ year }})</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Projects</h2>
+            <p>{{ projects }}</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Experience</h2>
+            <p>{{ experience }}</p>
+        </div>

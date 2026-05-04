@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chronological Resume</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.resume{
+    width:100%;
+    min-height:100vh;
+    margin:0;
+    background:white;
+    padding:30px;
+    box-sizing:border-box;
+}
+
+.header{
+    text-align:center;
+    border-bottom:2px solid {{ theme_color }};
+    padding-bottom:20px;
+}
+
+.header h1{
+    margin:0;
+    color:#2c3e50;
+}
+
+.contact{
+    margin-top:10px;
+    color:#555;
+    font-size:14px;
+}
+
+.section{
+    margin-top:25px;
+}
+
+.section h2{
+    color:{{ theme_color }};
+    border-bottom:1px solid #ddd;
+    padding-bottom:5px;
+    margin-bottom:10px;
+}
+
+.box{
+    background:#fafafa;
+    padding:10px;
+    border-left:4px solid {{ theme_color }};
+    margin-top:10px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+.photo{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-top:15px;
+}
+@page {
+    margin:0;
+}
+body{
+    margin:0;
+    padding:0;
+}
+.full-page{
+    width:100%
+    min-height:100vh;
+}
+</style>
+</head>
+
+<body>
+
+<div class="resume">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>{{ name }}</h1>
+        <div class="contact">
+            {{ email }} | {{ phone }} | {{ address }}
+        </div>
+
+        {% if photo %}
+        <img src="{{ photo }}" class="photo">
+        {% endif %}
+    </div>
+
+    <!-- SUMMARY -->
+    {% if ai_summary %}
+    <div class="section">
+        <h2>Professional Summary</h2>
+        <p>{{ ai_summary }}</p>
+    </div>
+    {% endif %}
+
+    <!-- EXPERIENCE -->
+    {% if experience %}
+<div class="section">
+    <h2>Work Experience</h2>
+    <div class="box">
+        <p style="white-space: pre-line;">
+            {{ experience }}
+        </p>
+    </div>
+</div>
+{% endif %}
+
+    <!-- EDUCATION -->
+    {% if degree %}
+    <div class="section">
+        <h2>Education</h2>
+        <div class="box">
+            <strong>{{ degree }}</strong><br>
+            {{ college }}<br>
+            {{ year }}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- SKILLS -->
+    {% if skills %}
+    <div class="section">
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills.split('\n') %}
+                {% if skill.strip() %}
+                    <li>{{ skill }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- PROJECTS -->
+    {% if projects %}
+    <div class="section">
+        <h2>Projects</h2>
+        <div class="box">
+            <ul>
+                {% for project in projects.split('\n') %}
+                    {% if project.strip() %}
+                        <li>{{ project }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- LANGUAGES -->
+    {% if languages %}
+    <div class="section">
+        <h2>Languages</h2>
+        <ul>
+            {% for language in languages.split('\n') %}
+                {% if language.strip() %}
+                    <li>{{ language }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- CERTIFICATIONS -->
+    {% if certifications %}
+    <div class="section">
+        <h2>Certifications</h2>
+        <ul>
+            {% for certification in certifications.split('\n') %}
+                {% if certification.strip() %}
+                    <li>{{ certification }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- ACHIEVEMENTS -->
+    {% if achievements %}
+    <div class="section">
+        <h2>Achievements</h2>
+        <ul>
+            {% for achievement in achievements.split('\n') %}
+                {% if achievement.strip() %}
+                    <li>{{ achievement }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- LINKS -->
+    {% if linkedin %}
+    <div class="section">
+        <h2>LinkedIn</h2>
+        <p>{{ linkedin }}</p>
+    </div>
+    {% endif %}
+
+    {% if github %}
+    <div class="section">
+        <h2>GitHub</h2>
+        <p>{{ github }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

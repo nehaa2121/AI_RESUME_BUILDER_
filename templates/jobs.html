@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Job Suggestions</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; padding: 40px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; }
+        .job-card { border-left: 5px solid #3498db; background: #fafafa; margin: 20px 0; padding: 15px; border-radius: 5px; }
+        .job-title { font-size: 1.2rem; font-weight: bold; color: #2980b9; }
+        .match-score { color: #27ae60; font-weight: bold; }
+        .missing-skills { font-size: 0.9rem; color: #e74c3c; margin-top: 5px; }
+        .btn-back { display: inline-block; margin-top: 20px; text-decoration: none; color: #3498db; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>AI Job Suggestions & Analysis</h1>
+    <p>Based on your skills and degree, here are the best career paths for you:</p>
+
+    {% for res in analysis %}
+    <div class="job-card">
+        <div class="job-title">{{ res.job }}</div>
+        <div class="match-score">Match Score: {{ res.match }}%</div>
+        
+        {% if res.missing %}
+        <div class="missing-skills">
+            <strong>Skills to learn:</strong> {{ res.missing | join(", ") }}
+        </div>
+        {% else %}
+        <div style="color: #27ae60; font-size: 0.9rem;">✔️ You have all the core skills for this role!</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <a href="/dashboard" class="btn-back">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

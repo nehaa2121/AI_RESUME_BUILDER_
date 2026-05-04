@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            background-color: {{ theme_color or "#ffffff" }};
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+    @media print {
+    .no-print {
+        display: none !important;
+    }
+}
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    body {
+        margin: 0;
+        background: white;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<!-- DEBUG -->
+<!-- REMOVE AFTER TEST -->
+
+{% if template == "chronological" %}
+    {% include "chronological_resume.html" %}
+
+{% elif template == "functional" %}
+    {% include "functional_resume.html" %}  
+
+{% elif template == "combination" %}
+    {% include "combination_resume.html" %}  
+
+{% elif template == "targeted" %}
+    {% include "targeted_resume.html" %}
+
+{% elif template == "mini" or template == "mini_resume" %}
+    {% include "mini_resume.html" %}
+
+{% elif template == "portfolio" %}
+    {% include "portfolio_resume.html" %}
+    
+{% elif template == "creative" %}
+    {% include "creative_resume.html" %}  
+    
+    
+{% elif template == "modern" %}
+    {% include "modern_resume.html" %}  
+    
+{% elif template == "bold_red" %}
+    {% include "bold_red.html" %}   
+    
+    
+{% elif template == "professional_green" %}
+    {% include "professional_green.html" %}  
+    
+{% elif template == "simple" %}
+    {% include "simple.html" %}  
+    
+{% elif template == "classic_resume" %}
+    {% include "classic_resume.html" %}
+    
+{% elif template == "minimal_white" %}
+    {% include "minimal_white.html" %} 
+    
+{% elif template == "classic_resume" %}
+    {% include "templates/classic_resume.html" %}  
+    
+{% elif template == "elegant_gray" %}
+    {% include "elegant_gray.html" %} 
+     
+    
+{% elif template == "card_ui" %}
+    {% include "card_ui.html" %} 
+    
+{% elif template == "modern_dark" %}
+    {% include "modern_dark.html" %}     
+
+{% else %}
+    <h2 style="text-align:center;">No Template Selected ❌</h2>
+{% endif %}
+
+
+
+{% if not pdf_mode %}
+<div style="text-align:center;">
+    <a href="/download">
+        <button style="background:#2563eb; color:white; padding:10px 20px; border:none; border-radius:6px;">
+            Download PDF
+        </button>
+    </a>
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+    <a href="/ai_analysis">
+        <button style="background:#10b981; color:white; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">
+            View AI Analysis 🚀
+        </button>
+    </a>
+</div>
+    <br><br>
+
+    
+
+</div>
+{% endif %}
+
+
+
+</body>
+</html>

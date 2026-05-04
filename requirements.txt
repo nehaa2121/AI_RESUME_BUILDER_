@@ -1,0 +1,4 @@
+flask
+pdfkit
+google-generativeai
+gunicorn

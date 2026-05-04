@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Templates</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI';
+    background:#f4f6ff;
+     margin:0;
+    padding:0;
+
+    background-color: {{ theme_color }};
+    
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(to right,#667eea,#764ba2);
+    color:white;
+    padding:25px;
+    text-align:center;
+    font-size:26px;
+    font-weight:bold;
+       }
+
+/* SECTION TITLE */
+.section-title{
+    margin:30px 40px 10px;
+    color:#764ba2;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* SLIDER */
+.slider{
+    display:flex;
+    overflow-x:auto;
+    gap:20px;
+    padding:20px 40px;
+    scroll-snap-type:x mandatory;
+}
+
+/* HIDE SCROLLBAR */
+.slider::-webkit-scrollbar{
+    display:none;
+}
+
+/* CARD */
+.card{
+    min-width:500px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    scroll-snap-align:start;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+.card img{
+    width:500px;
+    height:500px;
+   
+    border-radius:15px 15px 0 0;
+}
+
+.card h3{
+    margin:10px;
+    color:#764ba2;
+}
+
+.card p{
+    font-size:12px;
+    margin:0 10px 10px;
+    color:#555;
+}
+
+.btn{
+    display:block;
+    margin:10px;
+    padding:8px;
+    background:#764ba2;
+    color:white;
+    text-align:center;
+    border-radius:20px;
+    text-decoration:none;
+    font-size:13px;
+}
+*{
+     -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+}
+@media print {
+    body {
+        background: white !important;
+    }
+
+    .resume {
+        box-shadow: none !important;
+        margin: 0 !important;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    Choose Your Resume Template
+</header>
+
+
+<div class="section-title">Recommended Templates</div>
+<div class="slider">
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='templates/simple.png') }}">
+        <h3>Student Resume</h3>
+        <p>Perfect for college students with academic and project details.</p>
+        <a class="btn" href="/form?template=simple">Use</a>
+    </div>
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='templates/card_ui.png') }}">
+        <h3>Internship Resume</h3>
+        <p>Designed for internship applications.</p>
+        <a class="btn" href="/form?template=card_ui">Use</a>
+    </div>
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='templates/modern_dark.png') }}">
+        <h3>Fresher Professional</h3>
+        <p>Professional layout for fresh graduates.</p>
+        <a class="btn" href="/form?template=modern_dark">Use</a>
+    </div>
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='templates/bold_red.png') }}">
+        <h3>Creative Resume</h3>
+        <p>Stylish template for creative and design fields.</p>
+        <a class="btn" href="/form?template=bold_red">Use</a>
+    </div>
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='templates/elegant_gray.png') }}">
+        <h3>ATS Friendly</h3>
+        <p>Optimized for recruiter software screening.</p>
+        <a class="btn" href="/form?template=elegant_gray">Use</a>
+    </div>
+
+</div>
+</body>
+</html>

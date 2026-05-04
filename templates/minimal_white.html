@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Resume</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            color: #111;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            font-size:25px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+            font-size: 25px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 5px 0;
+        }
+
+        .top {
+            margin-bottom: 15px;
+        }
+
+        .line {
+            border-top: 1px solid #ccc;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 18px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* IMPORTANT FOR PDF */
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="top">
+        <h1>{{ name }}</h1>
+        <p>{{ email }} | {{ phone }}</p>
+        <p>{{ address }}</p>
+    </div>
+
+    <div class="line"></div>
+
+    <!-- CAREER OBJECTIVE -->
+    <h2>Career Objective</h2>
+    <p>{{ ai_summary }}</p>
+
+    <!-- EDUCATION -->
+    <h2>Education</h2>
+    <p><b>{{ degree }}</b></p>
+    <p>{{ college }} - {{ year }}</p>
+
+    <!-- SKILLS -->
+    <h2>Skills</h2>
+    <p>{{ skills }}</p>
+
+    <!-- PROJECTS -->
+    <h2>Projects</h2>
+    <p>{{ projects }}</p>
+
+    <!-- EXPERIENCE -->
+    <h2>Experience</h2>
+    <p>{{ experience }}</p>
+
+</body>
+</html>

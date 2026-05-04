@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Targeted Resume</title>
+
+<style>
+
+/* PDF FIX */
+@page {
+    size: A4;
+    margin: 0;
+}
+
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    background:white;
+}
+
+/* MAIN */
+.resume{
+    width:100%;
+    min-height:100vh;
+    padding:40px;
+    box-sizing:border-box;
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    border-bottom:3px solid {{ theme_color }};
+    padding-bottom:15px;
+}
+
+.header h1{
+    margin:0;
+    color: {{ theme_color }};
+}
+
+/* JOB ROLE HIGHLIGHT */
+.role{
+    margin-top:8px;
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+}
+
+.contact{
+    margin-top:8px;
+    font-size:14px;
+    color:#555;
+}
+
+/* SECTION */
+.section{
+    margin-top:25px;
+}
+
+.section h2{
+    color: {{ theme_color }};
+    border-bottom:1px solid #ddd;
+    padding-bottom:5px;
+}
+
+/* BOX */
+.box{
+    margin-top:10px;
+    padding:12px;
+    background:#f9f9f9;
+    border-left:4px solid {{ theme_color }};
+}
+
+/* TEXT */
+p{
+    margin:5px 0;
+    line-height:1.5;
+}
+
+/* HIGHLIGHT SKILLS */
+.highlight{
+    background: {{ theme_color }};
+    color:white;
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:15px;
+    margin:5px 5px 0 0;
+    font-size:13px;
+}
+
+/* PHOTO */
+.photo{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-top:10px;
+}
+
+/* PRINT FIX */
+@media print {
+    body{
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="resume">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>{{ name }}</h1>
+
+        <!-- TARGET ROLE -->
+        {% if target_role %}
+        <div class="role">Applying for: {{ target_role }}</div>
+        {% endif %}
+
+        <div class="contact">
+            {{ email }} | {{ phone }} | {{ address }}
+        </div>
+
+        {% if photo %}
+        <img src="{{ photo }}" class="photo">
+        {% endif %}
+    </div>
+
+
+    <!-- SUMMARY -->
+    {% if ai_summary %}
+    <div class="section">
+        <h2>Professional Summary</h2>
+        <p>{{ ai_summary }}</p>
+    </div>
+    {% endif %}
+
+
+    <!-- KEY SKILLS (HIGHLIGHTED) -->
+    {% if skills %}
+    <div class="section">
+        <h2>Key Skills</h2>
+        <div class="box">
+            {% for skill in skills.split('\n') %}
+                {% if skill.strip() %}
+                    <span class="highlight">{{ skill }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!-- RELEVANT EXPERIENCE -->
+    {% if experience %}
+    <div class="section">
+        <h2>Relevant Experience</h2>
+        <div class="box">
+            {% for exp in experience.split('\n') %}
+                {% if exp.strip() %}
+                    <p>{{ exp }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!-- RELEVANT PROJECTS -->
+    {% if projects %}
+    <div class="section">
+        <h2>Relevant Projects</h2>
+        <div class="box">
+            {% for project in projects.split('\n') %}
+                {% if project.strip() %}
+                    <p>• {{ project }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!-- EDUCATION -->
+    {% if degree %}
+    <div class="section">
+        <h2>Education</h2>
+        <div class="box">
+            <p><strong>{{ degree }}</strong></p>
+            <p>{{ college }}</p>
+            <p>{{ year }}</p>
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!-- ADDITIONAL -->
+    {% if certifications %}
+    <div class="section">
+        <h2>Certifications</h2>
+        <div class="box">
+            {% for cert in certifications.split('\n') %}
+                {% if cert.strip() %}
+                    <p>• {{ cert }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+
+    {% if achievements %}
+    <div class="section">
+        <h2>Achievements</h2>
+        <div class="box">
+            {% for ach in achievements.split('\n') %}
+                {% if ach.strip() %}
+                    <p>• {{ ach }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!-- LINKS -->
+    {% if linkedin %}
+    <div class="section">
+        <h2>LinkedIn</h2>
+        <p>{{ linkedin }}</p>
+    </div>
+    {% endif %}
+
+    {% if github %}
+    <div class="section">
+        <h2>GitHub</h2>
+        <p>{{ github }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

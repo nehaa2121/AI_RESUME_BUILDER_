@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+        <style>
+            body{
+                margin:0;
+                font-family:'Segoe UI';
+                background:linear-gradient(to right,#667eea,#764ba2);
+            }
+            header{
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                padding:20px 40px;
+                background:rgba(225,255,255,0.1);
+            }
+            .logo{
+                color:white;
+                font-size:24px;
+                font-weight:bold;
+            }
+            nav{
+                display:flex;
+                align-items:center;
+                gap:20px;
+            }
+            nav a{
+                text-decoration:none;
+                color:white;
+                font-weight:bold;
+            }
+            .profile{
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                background:white;
+                color:#764ba2;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                font-weight:bold;
+            }
+            .main{
+                text-align:center;
+                color:white;
+                margin-top:50px;
+            }
+            .options{
+                display:flex;
+                justify-content:center;
+                gap:40px;
+                margin-top:50px;
+                flex-wrap:wrap;
+            }
+            .card{
+                background:white;
+                color:#333;
+                width:320px;
+                padding:30px;
+                border-radius:20px;
+                text-align:center;
+                box-shadow:0 5px 15px rgba(0,0,0,0.2);
+            }
+            .card h2{
+                color:#764ba2;
+            }
+            .card button{
+                padding:12px 25px;
+                background:#764ba2;
+                color:white;
+                border:none;
+                border-radius:25px;
+                cursor:pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">AI Resume Builder</div>
+
+            <nav>
+                <h2>Dashboard</h2>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+
+    
+
+    <a href="/logout">
+        <button style="
+            background:#ef4444;
+            color:white;
+            padding:8px 16px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+        ">
+            Logout
+        </button>
+    </a>
+
+</div>
+            </nav>
+        </header>
+
+        <div class="main">
+            <h1>Welcome to Dashboard</h1>
+            <p>Choose how you want to create your resume</p>
+
+            <div class="options">
+                <div class="card">
+                    <h2>⚡ AI Generate Resume</h2>
+                    <p>
+                        Let AI automatically choose the best resume format based on your job role and profile.
+                    </p>
+                    <a href="/auto_generate">
+                        <button>Generate with AI</button>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <h2>Choose Template Manually</h2>
+                    <p>Browse all available
+                         templates and choose your
+                          preferred design manually.
+                        </p>
+                        <a href="/templates">
+                            <button>Browse Templates</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </body>
+        </html>

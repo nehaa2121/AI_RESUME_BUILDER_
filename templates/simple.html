@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Resume</title>
+        <style>
+            body {
+                background:#ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="simple">
+        <h1 style="color: {{ theme_color }};">{{ name }}</h1>
+        <p>{{ email }} | {{ phone }}</p>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Summary</h2>
+            <p>{{ ai_summary }}</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Skills</h2>
+            <p>{{ skills }}</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Education</h2>
+            <p>{{ degree }}-{{college}} ({{ year }})</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Projects</h2>
+            <p>{{ projects }}</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color: {{ theme_color }};">Experience</h2>
+            <p>{{ experience }}</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

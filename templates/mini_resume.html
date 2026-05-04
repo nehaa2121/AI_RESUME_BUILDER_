@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mini Resume</title>
+
+<style>
+
+/* PDF FIX */
+@page {
+    size: A4;
+    margin: 0;
+}
+
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    background:white;
+}
+
+/* MAIN */
+.resume{
+    width:100%;
+    min-height:100vh;
+    padding:30px;
+    box-sizing:border-box;
+}
+
+/* HEADER */
+.header{
+    border-bottom:2px solid {{ theme_color }};
+    padding-bottom:10px;
+}
+
+.header h1{
+    margin:0;
+    color: {{ theme_color }};
+    font-size:24px;
+}
+
+.contact{
+    font-size:13px;
+    color:#555;
+    margin-top:5px;
+}
+
+/* FLEX TOP */
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* PHOTO */
+.photo{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+/* SECTION */
+.section{
+    margin-top:20px;
+}
+
+.section h2{
+    font-size:16px;
+    color: {{ theme_color }};
+    border-bottom:1px solid #ddd;
+    margin-bottom:5px;
+}
+
+/* TEXT */
+p{
+    margin:3px 0;
+    font-size:14px;
+}
+
+/* SKILLS INLINE */
+.skills span{
+    display:inline-block;
+    background:#f1f1f1;
+    padding:4px 8px;
+    margin:3px;
+    border-radius:10px;
+    font-size:12px;
+}
+
+/* PRINT FIX */
+@media print {
+    body{
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="resume">
+
+    <!-- HEADER -->
+    <div class="top">
+        <div>
+            <h1>{{ name }}</h1>
+            <div class="contact">
+                {{ email }} | {{ phone }} | {{ address }}
+            </div>
+        </div>
+
+        {% if photo %}
+        <img src="{{ photo }}" class="photo">
+        {% endif %}
+    </div>
+
+
+    <!-- SUMMARY -->
+    {% if ai_summary %}
+    <div class="section">
+        <h2>Summary</h2>
+        <p>{{ ai_summary }}</p>
+    </div>
+    {% endif %}
+
+
+    <!-- SKILLS -->
+    {% if skills %}
+    <div class="section">
+        <h2>Skills</h2>
+        <div class="skills">
+            {% for skill in skills.split('\n') %}
+                {% if skill.strip() %}
+                    <span>{{ skill }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!-- PROJECTS -->
+    {% if projects %}
+    <div class="section">
+        <h2>Projects</h2>
+        {% for project in projects.split('\n') %}
+            {% if project.strip() %}
+                <p>• {{ project }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <!-- EXPERIENCE -->
+    {% if experience %}
+    <div class="section">
+        <h2>Experience</h2>
+        {% for exp in experience.split('\n') %}
+            {% if exp.strip() %}
+                <p>{{ exp }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <!-- EDUCATION -->
+    {% if degree %}
+    <div class="section">
+        <h2>Education</h2>
+        <p><strong>{{ degree }}</strong></p>
+        <p>{{ college }} ({{ year }})</p>
+    </div>
+    {% endif %}
+
+
+    <!-- LINKS -->
+    {% if linkedin %}
+    <div class="section">
+        <h2>LinkedIn</h2>
+        <p>{{ linkedin }}</p>
+    </div>
+    {% endif %}
+
+    {% if github %}
+    <div class="section">
+        <h2>GitHub</h2>
+        <p>{{ github }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

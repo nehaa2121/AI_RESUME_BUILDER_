@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Infographic Resume</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f3f4f6;
+}
+
+.container{
+    width:900px;
+    margin:20px auto;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.header{
+    background: {{ theme_color }};
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+.header h1{
+    margin:0;
+}
+
+/* CONTENT */
+.content{
+    display:flex;
+}
+
+/* LEFT PANEL */
+.left{
+    width:35%;
+    background:#f9fafb;
+    padding:20px;
+}
+
+.left h2{
+    color: {{ theme_color }};
+    border-bottom:2px solid {{ theme_color }};
+}
+
+/* RIGHT PANEL */
+.right{
+    width:65%;
+    padding:20px;
+}
+
+.right h2{
+    color: {{ theme_color }};
+    border-bottom:2px solid {{ theme_color }};
+}
+
+/* SKILL BAR */
+.skill{
+    margin-bottom:10px;
+}
+
+.bar{
+    height:8px;
+    background:#ddd;
+    border-radius:5px;
+}
+
+.fill{
+    height:8px;
+    background: {{ theme_color }};
+    border-radius:5px;
+}
+
+/* CIRCLE STYLE */
+.circle{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    border:5px solid {{ theme_color }};
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+/* SECTION */
+.section{
+    margin-bottom:20px;
+}
+
+p{
+    font-size:14px;
+}
+
+/* IMPORTANT FOR PDF COLOR */
+*{
+    -webkit-print-color-adjust: exact;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="resume">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>{{ name }}</h1>
+        <p>{{ role }}</p>
+        <p>{{ email }} | {{ phone }}</p>
+    </div>
+
+    <div class="content">
+
+        <!-- LEFT -->
+        <div class="left">
+
+            <h2>Skills</h2>
+
+            <div class="skill">
+                HTML
+                <div class="bar"><div class="fill" style="width:90%"></div></div>
+            </div>
+
+            <div class="skill">
+                CSS
+                <div class="bar"><div class="fill" style="width:85%"></div></div>
+            </div>
+
+            <div class="skill">
+                JavaScript
+                <div class="bar"><div class="fill" style="width:75%"></div></div>
+            </div>
+
+            <h2>Languages</h2>
+            <div class="circle">EN</div>
+            <div class="circle">HI</div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right">
+
+            <div class="section">
+                <h2>Profile</h2>
+                <p>{{ ai_summary }}</p>
+            </div>
+
+            <div class="section">
+                <h2>Experience</h2>
+                <p>{{ experience }}</p>
+            </div>
+
+            <div class="section">
+                <h2>Projects</h2>
+                <p>{{ projects }}</p>
+            </div>
+
+            <div class="section">
+                <h2>Education</h2>
+                <p>{{ degree }}</p>
+                <p>{{ college }} | {{ graduation_year }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

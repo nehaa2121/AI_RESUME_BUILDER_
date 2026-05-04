@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<h2>Admin Dashboard</h2>
+
+<a href="/admin_logout">Logout</a>
+
+<h3>Users</h3>
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Action</th>
+</tr>
+
+{% for user in users %}
+<tr>
+    <td>{{ user[0] }}</td>
+    <td>{{ user[1] }}</td>
+    <td>{{ user[2] }}</td>
+    <td><a href="/delete_user/{{ user[0] }}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+
+<h3>Resumes</h3>
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Action</th>
+</tr>
+
+{% for resume in resumes %}
+<tr>
+    <td>{{ resume[0] }}</td>
+    <td>{{ resume[1] }}</td>
+    <td><a href="/delete_resume/{{ resume[0] }}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio Resume</title>
+
+    <style>
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .resume {
+            width: 100%;
+            background: white;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px solid {{ theme_color }};
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: {{ theme_color }};
+            font-size: 28px;
+        }
+
+        .contact {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin-top: 10px;
+            object-fit: cover;
+        }
+
+        .section {
+            margin-top: 25px;
+        }
+
+        .section h2 {
+            color: {{ theme_color }};
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .box {
+            padding: 10px;
+            border-left: 4px solid {{ theme_color }};
+            background: #fafafa;
+            margin-bottom: 10px;
+        }
+
+        .item {
+            margin-bottom: 10px;
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .links a {
+            color: {{ theme_color }};
+            text-decoration: none;
+        }
+
+        ul {
+            padding-left: 18px;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+            }
+
+            .resume {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="resume">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>{{ name }}</h1>
+
+        <div class="contact">
+            {{ email }} | {{ phone }} | {{ address }}
+        </div>
+
+        {% if photo %}
+        <img src="{{ photo }}" class="photo">
+        {% endif %}
+    </div>
+
+    <!-- SUMMARY -->
+    {% if ai_summary %}
+    <div class="section">
+        <h2>About Me</h2>
+        <p>{{ ai_summary }}</p>
+    </div>
+    {% endif %}
+
+    <!-- SKILLS -->
+    {% if skills %}
+    <div class="section">
+        <h2>Skills</h2>
+        <div class="box">
+            {% for skill in skills.split('\n') %}
+                {% if skill.strip() %}
+                    <div class="item">{{ skill }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- PROJECTS -->
+    {% if projects %}
+    <div class="section">
+        <h2>Projects</h2>
+
+        {% for project in projects.split('\n') %}
+            {% if project.strip() %}
+                <div class="box">
+                    <div class="item-title">{{ project }}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- EXPERIENCE -->
+    {% if experience %}
+    <div class="section">
+        <h2>Experience</h2>
+
+        {% for exp in experience.split('\n') %}
+            {% if exp.strip() %}
+                <div class="box">
+                    {{ exp }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- EDUCATION -->
+    {% if degree %}
+    <div class="section">
+        <h2>Education</h2>
+        <div class="box">
+            <div class="item-title">{{ degree }}</div>
+            <div>{{ college }}</div>
+            <div>{{ year }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- LANGUAGES -->
+    {% if languages %}
+    <div class="section">
+        <h2>Languages</h2>
+        <div class="box">
+            {% for lang in languages.split('\n') %}
+                {% if lang.strip() %}
+                    <div>{{ lang }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- CERTIFICATIONS -->
+    {% if certifications %}
+    <div class="section">
+        <h2>Certifications</h2>
+        <div class="box">
+            {% for cert in certifications.split('\n') %}
+                {% if cert.strip() %}
+                    <div>{{ cert }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- ACHIEVEMENTS -->
+    {% if achievements %}
+    <div class="section">
+        <h2>Achievements</h2>
+        <div class="box">
+            {% for ach in achievements.split('\n') %}
+                {% if ach.strip() %}
+                    <div>{{ ach }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- LINKS -->
+    {% if linkedin or github %}
+    <div class="section">
+        <h2>Portfolio Links</h2>
+        <div class="box links">
+            {% if linkedin %}
+                <div>LinkedIn: <a href="{{ linkedin }}">{{ linkedin }}</a></div>
+            {% endif %}
+            {% if github %}
+                <div>GitHub: <a href="{{ github }}">{{ github }}</a></div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

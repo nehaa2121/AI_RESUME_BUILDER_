@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Auto Generate Resume</title>
+        <style>
+            body{
+                margin:0;
+                font-family:'Segoe UI';
+                background:linear-gradient(to right, #667eea,#764ba2);
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+            }
+            .box{
+                background:white;
+                padding:40px;
+                border-radius:15px;
+                text-align:center;
+                width:400px;
+            }
+            .box h1{
+                color:#764ba2;
+            }
+            input{
+                width:90%;
+                padding:12px;
+                margin: 20px 0;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+            }
+            button{
+                padding:12px 25px;
+                background:#764ba2;
+                color:white;
+                border:none;
+                border-radius:25px;
+                cursor:pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box">
+            <h1>Auto Generate Resume</h1>
+            <p>Enter your desired job role</p>
+
+            <form method="POST">
+            <input type="text" name="job-role" placeholder="eg. Software Developer" required>
+            <br>
+            <button type="submit">Generate Resume</button>
+        </form>
+    </div>
+</body>
+</html>

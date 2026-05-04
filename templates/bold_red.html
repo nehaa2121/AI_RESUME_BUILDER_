@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bold Red Resume</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .card {
+            width: 100%;
+            margin: auto;
+            background: #ffffff;
+            border: none;
+            padding: 0;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            color: #b91c1c;
+            font-size: 30px;
+        }
+
+        h2 {
+            margin-top: 25px;
+            border-bottom: 2px solid #ef4444;
+            padding-bottom: 5px;
+            font-size: 25px;
+            color: #dc2626;
+        }
+
+        p {
+            font-size: 20px;
+            color: #1f2933;
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        .top {
+            margin-bottom: 15px;
+        }
+
+        .contact {
+            color: #7f1d1d;
+            font-size: 13px;
+        }
+
+        .line {
+            border-top: 1px solid #fecaca;
+            margin: 10px 0;
+        }
+        .container{
+            width: 100%;
+        min-height: 297mm;
+       padding: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+    background: white;
+        }
+
+        /* PDF SAFE */
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+<div class="card">
+
+    <!-- HEADER -->
+    <div class="top">
+        <h1>{{ name }}</h1>
+        <p class="contact">{{ email }} | {{ phone }}</p>
+        <p class="contact">{{ address }}</p>
+    </div>
+
+    <div class="line"></div>
+
+    <!-- OBJECTIVE -->
+    <h2>Career Objective</h2>
+    <p>{{ ai_summary }}</p>
+
+    <!-- EDUCATION -->
+    <h2>Education</h2>
+    <p><b>{{ degree }}</b></p>
+    <p>{{ college }} - {{ year }}</p>
+
+    <!-- SKILLS -->
+    <h2>Skills</h2>
+    <p>{{ skills }}</p>
+
+    <!-- PROJECTS -->
+    <h2>Projects</h2>
+    <p>{{ projects }}</p>
+
+    <!-- EXPERIENCE -->
+    <h2>Experience</h2>
+    <p>{{ experience }}</p>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elegant Gray Resume</title>
+
+    <style>
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #e5e7eb;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card {
+            width: 800px;
+            margin: auto;
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            padding: 30px;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            color: #374151;
+            font-size: 30px;
+        }
+
+        h2 {
+            margin-top: 25px;
+            border-bottom: 1px solid #9ca3af;
+            padding-bottom: 5px;
+            font-size: 18px;
+            color: #4b5563;
+        }
+
+        p {
+            font-size: 20px;
+            color: #374151;
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        .top {
+            margin-bottom: 15px;
+        }
+
+        .contact {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .line {
+            border-top: 1px solid #d1d5db;
+            margin: 10px 0;
+        }
+
+        /* PDF SAFE */
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- HEADER -->
+    <div class="top">
+        <h1>{{ name }}</h1>
+        <p class="contact">{{ email }} | {{ phone }}</p>
+        <p class="contact">{{ address }}</p>
+    </div>
+
+    <div class="line"></div>
+
+    <!-- OBJECTIVE -->
+    <h2>Career Objective</h2>
+    <p>{{ ai_summary }}</p>
+
+    <!-- EDUCATION -->
+    <h2>Education</h2>
+    <p><b>{{ degree }}</b></p>
+    <p>{{ college }} - {{ year }}</p>
+
+    <!-- SKILLS -->
+    <h2>Skills</h2>
+    <p>{{ skills }}</p>
+
+    <!-- PROJECTS -->
+    <h2>Projects</h2>
+    <p>{{ projects }}</p>
+
+    <!-- EXPERIENCE -->
+    <h2>Experience</h2>
+    <p>{{ experience }}</p>
+
+</div>
+
+</body>
+</html>

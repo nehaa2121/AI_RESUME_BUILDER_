@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Theme Resume</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:0;
+    padding:30px;
+    background:#f3f4f6;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+}
+
+/* Dynamic Theme Color */
+h1{
+    color: {{ theme_color }};
+}
+
+h2{
+    border-bottom:3px solid {{ theme_color }};
+    padding-bottom:5px;
+    color: {{ theme_color }};
+}
+
+.role{
+    color: {{ theme_color }};
+    font-weight:bold;
+}
+
+.section{
+    margin-bottom:20px;
+}
+
+p{
+    font-size:18px;
+}
+
+/* Highlight Box */
+.highlight{
+    background: {{ theme_color }};
+    color:white;
+    padding:10px;
+    border-radius:6px;
+    margin-bottom:15px;
+}
+
+*{
+    -webkit-print-color-adjust: exact;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>{{ name }}</h1>
+    <p>{{ email }} | {{ phone }} | {{ address }}</p>
+    <p class="role">{{ role }}</p>
+
+    <div class="highlight">
+        <b>Career Objective:</b> {{ ai_summary }}
+    </div>
+
+    <div class="section">
+        <h2>Skills</h2>
+        <p>{{ skills }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Projects</h2>
+        <p>{{ projects }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Experience</h2>
+        <p>{{ experience }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        <p>{{ degree }}</p>
+        <p>{{ college }} | {{ graduation_year }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Certifications</h2>
+        <p>{{ certifications }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Achievements</h2>
+        <p>{{ achievements }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Languages</h2>
+        <p>{{ languages }}</p>
+    </div>
+
+</div>
+
+</body>
+</html>
