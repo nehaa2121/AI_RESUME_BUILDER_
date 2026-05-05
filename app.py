@@ -129,13 +129,13 @@ def auto_generate():
         if "developer" in job_role:
             template = "chronological"
         elif "student" in job_role:
-            template = "functional"
+            template = "elegant_gray"
         elif "designer" in job_role:
-            template = "creative"
+            template = "creative_resume"
         elif "manager" in job_role:
-            template = "combination"
+            template = "combination_resume"
         else:
-            template = "functional"
+            template = "simple"
 
         return redirect(f'/form?template={template}')
 
@@ -324,9 +324,8 @@ def download():
         "elegant_gray": "elegant_gray.html",
         "minimal_white": "minimal_white.html",
         "chronological": "chronological.html",
-        "functional": "functional.html",
         "creative": "creative.html",
-        "combination": "combination.html",
+        "combination": "combination.html"
     }
 
     selected_template = template_map.get(template, "simple.html")
