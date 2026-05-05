@@ -183,15 +183,45 @@ Skills: {skills}
         return "Motivated graduate with strong technical skills and a passion for growth."
 
 def ai_resume_improvement(skills, projects, experience):
-    prompt = f"Improve resume:\nSkills: {skills}\nProjects: {projects}\nExperience: {experience}"
+    prompt = f"""
+You are an AI resume tool.
+
+Give VERY SHORT output.
+
+Rules:
+- Only 4 bullet points
+- Max 6 words per point
+- No explanation
+- No extra text
+- No headings
+
+Resume:
+Skills: {skills}
+Projects: {projects}
+Experience: {experience}
+
+Output:
+• ...
+• ...
+• ...
+• ...
+"""
     try:
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt
         )
-        return response.text.strip()
+
+        text = response.text.strip()
+
+        # 🔥 EXTRA SAFETY CUT (IMPORTANT)
+        lines = text.split("\n")
+        short_output = "\n".join(lines[:4])
+
+        return short_output
+
     except:
-        return "• Add projects\n• Use action verbs\n• Improve formatting"
+        return "• Add projects\n• Use action verbs\n• Improve skills\n• Clean format"
 
 def ai_skill_suggestions(skills, degree):
     prompt = f"Suggest 3 skills for {degree} with {skills}"
@@ -244,56 +274,6 @@ def generate_resume():
         ai_skills=ai_skills
     )
     
-    
-# ---------------- CREATE PDF ----------------
-def create_pdf(data):
-    data = dict(data)
-
-    template = data.get("template")
-    theme_color = data.get("theme_color")
-
-    data.pop("template", None)
-    data.pop("theme_color", None)
-
-    rendered = render_template(
-        "resume.html",
-        **data,
-        template=template,
-        theme_color=theme_color,
-        pdf_mode=True   # IMPORTANT
-    )
-
-    config = pdfkit.configuration(
-        wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
-    )
-
-    options = {
-        'enable-local-file-access': None,
-        'page-size': 'A4',
-        'margin-top': '0mm',
-        'margin-right': '0mm',
-        'margin-bottom': '0mm',
-        'margin-left': '0mm',
-        'encoding': "UTF-8"
-    }
-
-    pdfkit.from_string(
-        rendered,
-        "resume.pdf",
-        configuration=config,
-        options=options
-    )
-
-# ---------------- DOWNLOAD ----------------
-@app.route("/download")
-def download():
-    data = session.get("user_data")
-
-    if not data:
-        return "No resume found"
-
-    create_pdf(data)
-    return send_file("resume.pdf", as_attachment=True)      
 
 # ---------------- AI ANALYSIS ----------------
 @app.route("/ai_analysis")
@@ -321,6 +301,63 @@ def ai_analysis():
             "Improve formatting"
         ]
     )
+    
+# ---------------- DOWNLOAD PDF ----------------
+@app.route("/download")
+def download():
+    data = session.get("user_data")
+
+    if not data:
+        return "No resume found"
+
+    template = data.get("template", "simple")
+
+    template_map = {
+        "simple": "simple.html",
+        "modern_blue": "modern_blue.html",
+        "modern_dark": "modern_dark.html",
+        "card_ui": "card_ui.html",
+        "bold_red": "bold_red.html",
+        "professional_green": "professional_green.html",
+        "classic_resume": "classic_resume.html",
+        "creative_gradient": "creative_gradient.html",
+        "elegant_gray": "elegant_gray.html",
+        "minimal_white": "minimal_white.html"
+    }
+
+    selected_template = template_map.get(template, "simple.html")
+
+    rendered_html = render_template(
+        selected_template,
+        **data,
+        pdf_mode=True
+    )
+
+    # ✅ PDFKIT GENERATION
+    options = {
+        'page-size': 'A4',
+        'margin-top': '0mm',
+        'margin-right': '0mm',
+        'margin-bottom': '0mm',
+        'margin-left': '0mm',
+        'encoding': "UTF-8",
+        'enable-local-file-access': None
+    }
+
+    pdfkit.from_string(
+        rendered_html,
+        "resume.pdf",
+        configuration=config,
+        options=options
+    )
+
+    return send_file("resume.pdf", as_attachment=True)
+
+config = pdfkit.configuration(
+    wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+)
+
+    
 
 # ---------------- LOGOUT ----------------
 @app.route("/logout")
@@ -330,4 +367,4 @@ def logout():
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    app.run()
