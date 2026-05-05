@@ -113,7 +113,7 @@ p{
 
     <!-- HEADER -->
     <div class="header">
-        <h1>{{ name }}</h1>
+        <h1 style="color: {{ theme_color }};">{{ name }}</h1>
 
         <!-- TARGET ROLE -->
         {% if target_role %}
@@ -133,7 +133,7 @@ p{
     <!-- SUMMARY -->
     {% if ai_summary %}
     <div class="section">
-        <h2>Professional Summary</h2>
+        <h2 style="color: {{ theme_color }};">Professional Summary</h2>
         <p>{{ ai_summary }}</p>
     </div>
     {% endif %}
@@ -142,7 +142,7 @@ p{
     <!-- KEY SKILLS (HIGHLIGHTED) -->
     {% if skills %}
     <div class="section">
-        <h2>Key Skills</h2>
+        <h2 style="color: {{ theme_color }};">Key Skills</h2>
         <div class="box">
             {% for skill in skills.split('\n') %}
                 {% if skill.strip() %}
@@ -157,7 +157,7 @@ p{
     <!-- RELEVANT EXPERIENCE -->
     {% if experience %}
     <div class="section">
-        <h2>Relevant Experience</h2>
+        <h2 style="color: {{ theme_color }};">Relevant Experience</h2>
         <div class="box">
             {% for exp in experience.split('\n') %}
                 {% if exp.strip() %}
@@ -172,7 +172,7 @@ p{
     <!-- RELEVANT PROJECTS -->
     {% if projects %}
     <div class="section">
-        <h2>Relevant Projects</h2>
+        <h2 style="color: {{ theme_color }};">Relevant Projects</h2>
         <div class="box">
             {% for project in projects.split('\n') %}
                 {% if project.strip() %}
@@ -187,7 +187,7 @@ p{
     <!-- EDUCATION -->
     {% if degree %}
     <div class="section">
-        <h2>Education</h2>
+        <h2 style="color: {{ theme_color }};">Education</h2>
         <div class="box">
             <p><strong>{{ degree }}</strong></p>
             <p>{{ college }}</p>
@@ -200,7 +200,7 @@ p{
     <!-- ADDITIONAL -->
     {% if certifications %}
     <div class="section">
-        <h2>Certifications</h2>
+        <h2 style="color: {{ theme_color }};">Certifications</h2>
         <div class="box">
             {% for cert in certifications.split('\n') %}
                 {% if cert.strip() %}
@@ -214,7 +214,7 @@ p{
 
     {% if achievements %}
     <div class="section">
-        <h2>Achievements</h2>
+        <h2 style="color: {{ theme_color }};">Achievements</h2>
         <div class="box">
             {% for ach in achievements.split('\n') %}
                 {% if ach.strip() %}
@@ -229,14 +229,14 @@ p{
     <!-- LINKS -->
     {% if linkedin %}
     <div class="section">
-        <h2>LinkedIn</h2>
+        <h2 style="color: {{ theme_color }};">LinkedIn</h2>
         <p>{{ linkedin }}</p>
     </div>
     {% endif %}
 
     {% if github %}
     <div class="section">
-        <h2>GitHub</h2>
+        <h2 style="color: {{ theme_color }};">GitHub</h2>
         <p>{{ github }}</p>
     </div>
     {% endif %}
