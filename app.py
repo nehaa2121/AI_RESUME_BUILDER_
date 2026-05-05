@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session, send_file
 import sqlite3
 import os
-from google import genai
+import google.generativeai as genai
 
 # TRY importing pdfkit (for local use)
 try:
@@ -11,10 +11,10 @@ except:
     PDFKIT_AVAILABLE = False
 
 app = Flask(__name__)
-app.secret_key = "mysecretkey123"
+app.secret_key = os.environ.get("SECRET_KEY", "fallback")
 
 # ---------------- AI CLIENT ----------------
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 
 # ---------------- DATABASE INIT ----------------
 def init_db():
@@ -165,10 +165,9 @@ Skills: {skills}
 """
 
     try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt
-        )
+        model = genai.GenerativeModel("gemini-1.5-flash")
+
+        response = model.generate_content(prompt)
 
         text = response.text.strip()
 
@@ -207,10 +206,9 @@ Output:
 • ...
 """
     try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt
-        )
+        model = genai.GenerativeModel("gemini-1.5-flash")
+
+        response = model.generate_content(prompt)
 
         text = response.text.strip()
 
@@ -226,10 +224,9 @@ Output:
 def ai_skill_suggestions(skills, degree):
     prompt = f"Suggest 3 skills for {degree} with {skills}"
     try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt
-        )
+        model = genai.GenerativeModel("gemini-1.5-flash")
+
+        response = model.generate_content(prompt)
         return response.text.strip()
     except:
         return "Communication, Problem-solving, Teamwork"
@@ -305,6 +302,9 @@ def ai_analysis():
 # ---------------- DOWNLOAD PDF ----------------
 @app.route("/download")
 def download():
+    if not PDFKIT_AVAILABLE:
+        return "PDF download not supported on server yet"
+
     data = session.get("user_data")
 
     if not data:
@@ -333,7 +333,6 @@ def download():
         pdf_mode=True
     )
 
-    # ✅ PDFKIT GENERATION
     options = {
         'page-size': 'A4',
         'margin-top': '0mm',
@@ -344,18 +343,14 @@ def download():
         'enable-local-file-access': None
     }
 
-    pdfkit.from_string(
-        rendered_html,
-        "resume.pdf",
-        configuration=config,
-        options=options
-    )
+    pdfkit.from_string(rendered_html, "resume.pdf", options=options)
 
     return send_file("resume.pdf", as_attachment=True)
 
-config = pdfkit.configuration(
+"""config = pdfkit.configuration(
     wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
 )
+"""
 
     
 
