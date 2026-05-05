@@ -322,7 +322,11 @@ def download():
         "classic_resume": "classic_resume.html",
         "creative_gradient": "creative_gradient.html",
         "elegant_gray": "elegant_gray.html",
-        "minimal_white": "minimal_white.html"
+        "minimal_white": "minimal_white.html",
+        "chronological": "chronological.html",
+        "functional": "functional.html",
+        "creative": "creative.html",
+        "combination": "combination.html",
     }
 
     selected_template = template_map.get(template, "simple.html")
